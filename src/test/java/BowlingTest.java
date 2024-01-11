@@ -12,24 +12,21 @@ public class BowlingTest {
         game = new Game();
     }
 
-    @Test
-    void gameCanRoll() {
-        game.roll(0);
+    private void rollMany(int n, int pins) {
+        for (int i = 0; i < n; i++) {
+            game.roll(pins);
+        }
     }
 
     @Test
     void gutterGame() {
-        for (int i = 0; i < 20; i++) {
-            game.roll(0);
-        }
+        rollMany(20, 0);
         assertEquals(0, game.score());
     }
 
     @Test
     void allOnes() {
-        for (int i = 0; i < 20; i++) {
-            game.roll(1);
-        }
+        rollMany(20, 1);
         assertEquals(20, game.score());
     }
 }
